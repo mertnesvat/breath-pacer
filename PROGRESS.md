@@ -15,7 +15,7 @@ LEDs fading smoothly. Button cycling modes. Ready for Phase 2 (stripboard).
 - [x] Blue LED (hold) steady on GP2
 - [x] Button on GP3 cycling through 5 modes
 - [x] All 4 breathing patterns
-- [x] Sleep mode (mode 4)
+- [x] Off mode (mode 4) — polls GP3, LEDs off
 - [x] Software PWM fade (50 steps, 100fps)
 
 ---
@@ -139,6 +139,11 @@ enter_sleep()            — IOC sleep, GP3 change wakes chip
 - Button debounce: 3 consecutive frames = 30ms
 
 ---
+
+## Known Limitations
+- Off mode uses polling (chip keeps running) — not true sleep (~1µA)
+- IOC wake from sleep didn't work on breadboard — needs investigation for Phase 3 PCB
+- True sleep important for CR2032 battery life target
 
 ## Next Steps (Phase 2 — Stripboard)
 

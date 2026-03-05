@@ -90,17 +90,11 @@ static uint8_t breathe(uint8_t inhale, uint8_t hold1,
     return 0;
 }
 
-// Sleep until button press (IOC on GP3 wakes chip).
+// Off mode: LEDs off, poll button until pressed.
+// (Simpler than IOC sleep for now — can optimise for power later)
 static void enter_sleep(void) {
     GPIO = 0x00;
-    (void)GPIO;      // Read GPIO to arm IOC latch — required before SLEEP()
-    GPIF = 0;
-    GPIE = 1;
-    SLEEP();
-    NOP();
-    (void)GPIO;      // Read GPIO to clear IOC condition after wake
-    GPIF = 0;
-    GPIE = 0;
+    while (GP3);     // Wait here until button pulled LOW
 }
 
 void main(void) {

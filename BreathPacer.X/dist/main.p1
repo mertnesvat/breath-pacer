@@ -1,0 +1,410 @@
+Version 4.0 HI-TECH Software Intermediate Code
+"216 /Applications/microchip/mplabx/v6.30/packs/Microchip/PIC10-12Fxxx_DFP/1.8.184/xc8/pic/include/proc/pic12f675.h
+[v _GPIO `Vuc ~T0 @X0 0 e@5 ]
+[v F164 `(v ~T0 @X0 1 tf1`ul ]
+"20 /Applications/microchip/xc8/v3.10/pic/include/builtins.h
+[v __delay `JF164 ~T0 @X0 0 e ]
+[p i __delay ]
+"1596 /Applications/microchip/mplabx/v6.30/packs/Microchip/PIC10-12Fxxx_DFP/1.8.184/xc8/pic/include/proc/pic12f675.h
+[v _GP3 `Vb ~T0 @X0 0 e@43 ]
+"1608
+[v _GPIF `Vb ~T0 @X0 0 e@88 ]
+"1605
+[v _GPIE `Vb ~T0 @X0 0 e@91 ]
+"8 /Applications/microchip/xc8/v3.10/pic/include/builtins.h
+[v ___nop `(v ~T0 @X0 0 ef ]
+[p i ___nop ]
+[p mainexit ]
+"1402 /Applications/microchip/mplabx/v6.30/packs/Microchip/PIC10-12Fxxx_DFP/1.8.184/xc8/pic/include/proc/pic12f675.h
+[v _ANSEL `Vuc ~T0 @X0 0 e@159 ]
+"795
+[v _TRISIO `Vuc ~T0 @X0 0 e@133 ]
+"52 /Applications/microchip/mplabx/v6.30/packs/Microchip/PIC10-12Fxxx_DFP/1.8.184/xc8/pic/include/proc/pic12f675.h
+[; <" INDF equ 00h ;# ">
+"72
+[; <" TMR0 equ 01h ;# ">
+"92
+[; <" PCL equ 02h ;# ">
+"112
+[; <" STATUS equ 03h ;# ">
+"198
+[; <" FSR equ 04h ;# ">
+"218
+[; <" GPIO equ 05h ;# ">
+"306
+[; <" PCLATH equ 0Ah ;# ">
+"326
+[; <" INTCON equ 0Bh ;# ">
+"404
+[; <" PIR1 equ 0Ch ;# ">
+"452
+[; <" TMR1 equ 0Eh ;# ">
+"459
+[; <" TMR1L equ 0Eh ;# ">
+"479
+[; <" TMR1H equ 0Fh ;# ">
+"499
+[; <" T1CON equ 010h ;# ">
+"564
+[; <" CMCON equ 019h ;# ">
+"623
+[; <" ADRESH equ 01Eh ;# ">
+"643
+[; <" ADCON0 equ 01Fh ;# ">
+"727
+[; <" OPTION_REG equ 081h ;# ">
+"797
+[; <" TRISIO equ 085h ;# ">
+"847
+[; <" PIE1 equ 08Ch ;# ">
+"895
+[; <" PCON equ 08Eh ;# ">
+"929
+[; <" OSCCAL equ 090h ;# ">
+"989
+[; <" WPU equ 095h ;# ">
+"1034
+[; <" IOC equ 096h ;# ">
+"1039
+[; <" IOCB equ 096h ;# ">
+"1208
+[; <" VRCON equ 099h ;# ">
+"1268
+[; <" EEDATA equ 09Ah ;# ">
+"1273
+[; <" EEDAT equ 09Ah ;# ">
+"1306
+[; <" EEADR equ 09Bh ;# ">
+"1326
+[; <" EECON1 equ 09Ch ;# ">
+"1364
+[; <" EECON2 equ 09Dh ;# ">
+"1384
+[; <" ADRESL equ 09Eh ;# ">
+"1404
+[; <" ANSEL equ 09Fh ;# ">
+"20 main.c
+[p x FOSC    =  INTRCIO    ]
+"21
+[p x WDTE    =  OFF        ]
+"22
+[p x PWRTE  =  ON         ]
+"23
+[p x MCLRE  =  OFF        ]
+"24
+[p x BOREN  =  ON         ]
+"25
+[p x CP        =  OFF ]
+"26
+[p x CPD      =  OFF ]
+"38
+[v _btn_count `uc ~T0 @X0 1 s ]
+[i _btn_count
+-> -> 0 `i `uc
+]
+"42
+[v _pwm_frame `(uc ~T0 @X0 1 sf2`uc`uc ]
+{
+[e :U _pwm_frame ]
+[v _led `uc ~T0 @X0 1 r1 ]
+[v _duty `uc ~T0 @X0 1 r2 ]
+[f ]
+"43
+{
+[v _i `uc ~T0 @X0 1 a ]
+[e = _i -> -> 0 `i `uc ]
+[e $ < -> _i `i -> 50 `i 86  ]
+[e $U 87  ]
+[e :U 86 ]
+{
+"44
+[e = _GPIO -> ? < -> _i `i -> _duty `i : -> _led `i -> 0 `i `uc ]
+"45
+[e ( __delay (1 -> * -> -> 200 `i `d / -> -> 4000000 `l `d .4000000.0 `ul ]
+"46
+}
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 50 `i 86  ]
+[e :U 87 ]
+}
+"47
+[e = _GPIO -> -> 0 `i `uc ]
+"49
+[e $ ! ! _GP3 89  ]
+{
+"50
+[e $ ! >= -> =+ _btn_count -> -> 1 `i `uc `i -> 3 `i 90  ]
+{
+[e = _btn_count -> -> 0 `i `uc ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 85  ]
+}
+[e :U 90 ]
+"51
+}
+[e $U 91  ]
+[e :U 89 ]
+{
+"52
+[e = _btn_count -> -> 0 `i `uc ]
+"53
+}
+[e :U 91 ]
+"54
+[e ) -> -> 0 `i `uc ]
+[e $UE 85  ]
+"55
+[e :UE 85 ]
+}
+"60
+[v _fade_led `(uc ~T0 @X0 1 sf2`uc`uc ]
+{
+[e :U _fade_led ]
+[v _led `uc ~T0 @X0 1 r1 ]
+[v _duration_sec `uc ~T0 @X0 1 r2 ]
+[f ]
+"61
+[v _fps `uc ~T0 @X0 1 a ]
+[e = _fps _duration_sec ]
+"63
+{
+[v _duty `uc ~T0 @X0 1 a ]
+[e = _duty -> -> 0 `i `uc ]
+[e $ < -> _duty `i -> 50 `i 93  ]
+[e $U 94  ]
+[e :U 93 ]
+"64
+{
+[v _f `uc ~T0 @X0 1 a ]
+[e = _f -> -> 0 `i `uc ]
+[e $U 99  ]
+[e :U 96 ]
+"65
+[e $ ! != -> ( _pwm_frame (2 , _led _duty `i -> 0 `i 100  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 92  ]
+[e :U 100 ]
+[e ++ _f -> -> 1 `i `uc ]
+[e :U 99 ]
+[e $ < -> _f `i -> _fps `i 96  ]
+[e :U 97 ]
+}
+[e ++ _duty -> -> 1 `i `uc ]
+[e $ < -> _duty `i -> 50 `i 93  ]
+[e :U 94 ]
+}
+"67
+{
+[v _duty `uc ~T0 @X0 1 a ]
+[e = _duty -> -> 50 `i `uc ]
+[e $ > -> _duty `i -> 0 `i 101  ]
+[e $U 102  ]
+[e :U 101 ]
+"68
+{
+[v _f `uc ~T0 @X0 1 a ]
+[e = _f -> -> 0 `i `uc ]
+[e $U 107  ]
+[e :U 104 ]
+"69
+[e $ ! != -> ( _pwm_frame (2 , _led -> - -> _duty `i -> 1 `i `uc `i -> 0 `i 108  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 92  ]
+[e :U 108 ]
+[e ++ _f -> -> 1 `i `uc ]
+[e :U 107 ]
+[e $ < -> _f `i -> _fps `i 104  ]
+[e :U 105 ]
+}
+[e -- _duty -> -> 1 `i `uc ]
+[e $ > -> _duty `i -> 0 `i 101  ]
+[e :U 102 ]
+}
+"71
+[e ) -> -> 0 `i `uc ]
+[e $UE 92  ]
+"72
+[e :UE 92 ]
+}
+"76
+[v _hold_led `(uc ~T0 @X0 1 sf2`uc`uc ]
+{
+[e :U _hold_led ]
+[v _led `uc ~T0 @X0 1 r1 ]
+[v _duration_sec `uc ~T0 @X0 1 r2 ]
+[f ]
+"77
+[v _frames `us ~T0 @X0 1 a ]
+[e = _frames -> * -> -> _duration_sec `us `ui -> -> 100 `i `ui `us ]
+"78
+{
+[v _f `us ~T0 @X0 1 a ]
+[e = _f -> -> 0 `i `us ]
+[e $U 113  ]
+[e :U 110 ]
+"79
+[e $ ! != -> ( _pwm_frame (2 , _led -> -> 50 `i `uc `i -> 0 `i 114  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 109  ]
+[e :U 114 ]
+[e ++ _f -> -> 1 `i `us ]
+[e :U 113 ]
+[e $ < -> _f `ui -> _frames `ui 110  ]
+[e :U 111 ]
+}
+"80
+[e ) -> -> 0 `i `uc ]
+[e $UE 109  ]
+"81
+[e :UE 109 ]
+}
+"84
+[v _breathe `(uc ~T0 @X0 1 sf4`uc`uc`uc`uc ]
+"85
+{
+[e :U _breathe ]
+"84
+[v _inhale `uc ~T0 @X0 1 r1 ]
+[v _hold1 `uc ~T0 @X0 1 r2 ]
+"85
+[v _exhale `uc ~T0 @X0 1 r3 ]
+[v _hold2 `uc ~T0 @X0 1 r4 ]
+[f ]
+"86
+[e $ ! != -> ( _fade_led (2 , -> << -> 1 `i -> 0 `i `uc _inhale `i -> 0 `i 116  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 115  ]
+[e :U 116 ]
+"87
+[e $ ! && != -> _hold1 `i -> 0 `i != -> ( _hold_led (2 , -> << -> 1 `i -> 2 `i `uc _hold1 `i -> 0 `i 117  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 115  ]
+[e :U 117 ]
+"88
+[e $ ! != -> ( _fade_led (2 , -> << -> 1 `i -> 1 `i `uc _exhale `i -> 0 `i 118  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 115  ]
+[e :U 118 ]
+"89
+[e $ ! && != -> _hold2 `i -> 0 `i != -> ( _hold_led (2 , -> << -> 1 `i -> 2 `i `uc _hold2 `i -> 0 `i 119  ]
+[e ) -> -> 1 `i `uc ]
+[e $UE 115  ]
+[e :U 119 ]
+"90
+[e ) -> -> 0 `i `uc ]
+[e $UE 115  ]
+"91
+[e :UE 115 ]
+}
+"94
+[v _enter_sleep `(v ~T0 @X0 1 sf ]
+{
+[e :U _enter_sleep ]
+[f ]
+"95
+[e = _GPIO -> -> 0 `i `uc ]
+"96
+[e _GPIO ]
+"97
+[e = _GPIF -> -> 0 `i `b ]
+"98
+[e = _GPIE -> -> 1 `i `b ]
+"99
+[; <" sleep ;# ">
+"100
+[e ( ___nop ..  ]
+"101
+[e _GPIO ]
+"102
+[e = _GPIF -> -> 0 `i `b ]
+"103
+[e = _GPIE -> -> 0 `i `b ]
+"104
+[e :UE 120 ]
+}
+[v $root$_main `(v ~T0 @X0 0 e ]
+"106
+[v _main `(v ~T0 @X0 1 ef ]
+{
+[e :U _main ]
+[f ]
+"107
+[e = _ANSEL -> -> 0 `i `uc ]
+"108
+[e = _TRISIO -> -> 8 `i `uc ]
+"109
+[e = _GPIO -> -> 0 `i `uc ]
+"111
+[v _mode `uc ~T0 @X0 1 a ]
+[e = _mode -> -> 0 `i `uc ]
+"113
+[e :U 123 ]
+{
+"114
+[e $U 126  ]
+{
+"115
+[e :U 127 ]
+[e $U 128  ]
+[e :U 129 ]
+[e :U 128 ]
+[e $ ! != -> ( _breathe (4 , , , -> -> 4 `i `uc -> -> 0 `i `uc -> -> 4 `i `uc -> -> 0 `i `uc `i -> 0 `i 129  ]
+[e :U 130 ]
+[e $U 125  ]
+"116
+[e :U 131 ]
+[e $U 132  ]
+[e :U 133 ]
+[e :U 132 ]
+[e $ ! != -> ( _breathe (4 , , , -> -> 6 `i `uc -> -> 0 `i `uc -> -> 6 `i `uc -> -> 0 `i `uc `i -> 0 `i 133  ]
+[e :U 134 ]
+[e $U 125  ]
+"117
+[e :U 135 ]
+[e $U 136  ]
+[e :U 137 ]
+[e :U 136 ]
+[e $ ! != -> ( _breathe (4 , , , -> -> 4 `i `uc -> -> 4 `i `uc -> -> 4 `i `uc -> -> 4 `i `uc `i -> 0 `i 137  ]
+[e :U 138 ]
+[e $U 125  ]
+"118
+[e :U 139 ]
+[e $U 140  ]
+[e :U 141 ]
+[e :U 140 ]
+[e $ ! != -> ( _breathe (4 , , , -> -> 4 `i `uc -> -> 7 `i `uc -> -> 8 `i `uc -> -> 0 `i `uc `i -> 0 `i 141  ]
+[e :U 142 ]
+[e $U 125  ]
+"119
+[e :U 143 ]
+[e ( _enter_sleep ..  ]
+[e $U 125  ]
+"120
+}
+[e $U 125  ]
+[e :U 126 ]
+[e [\ _mode , $ -> 0 `i 127
+ , $ -> 1 `i 131
+ , $ -> 2 `i 135
+ , $ -> 3 `i 139
+ , $ -> 4 `i 143
+ 125 ]
+[e :U 125 ]
+"123
+[e $U 144  ]
+[e :U 145 ]
+[e :U 144 ]
+[e $ ! _GP3 145  ]
+[e :U 146 ]
+"124
+[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+"125
+[e = _mode -> % + -> _mode `i -> 1 `i -> 5 `i `uc ]
+"126
+}
+[e :U 122 ]
+[e $U 123  ]
+[e :U 124 ]
+"127
+[e :UE 121 ]
+}

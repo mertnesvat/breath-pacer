@@ -93,12 +93,14 @@ static uint8_t breathe(uint8_t inhale, uint8_t hold1,
 // Sleep until button press (IOC on GP3 wakes chip).
 static void enter_sleep(void) {
     GPIO = 0x00;
+    (void)GPIO;      // Read GPIO to arm IOC latch — required before SLEEP()
     GPIF = 0;
     GPIE = 1;
     SLEEP();
     NOP();
-    GPIE = 0;
+    (void)GPIO;      // Read GPIO to clear IOC condition after wake
     GPIF = 0;
+    GPIE = 0;
 }
 
 void main(void) {

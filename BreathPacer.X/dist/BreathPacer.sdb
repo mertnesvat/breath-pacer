@@ -1,0 +1,134 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 12F675 ]
+[d frameptr 0 ]
+"5 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+"10 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"15 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"4 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 /Applications/microchip/xc8/v3.10/pic/sources/c99/pic/__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"42 /Users/mert/Developer/Hardware/BreathPacer/BreathPacer.X/main.c
+[v _pwm_frame pwm_frame `(uc  1 s 1 pwm_frame ]
+"60
+[v _fade_led fade_led `(uc  1 s 1 fade_led ]
+"76
+[v _hold_led hold_led `(uc  1 s 1 hold_led ]
+"84
+[v _breathe breathe `(uc  1 s 1 breathe ]
+"94
+[v _enter_sleep enter_sleep `(v  1 s 1 enter_sleep ]
+"106
+[v _main main `(v  1 e 1 0 ]
+"216 /Applications/microchip/mplabx/v6.30/packs/Microchip/PIC10-12Fxxx_DFP/1.8.184/xc8/pic/include/proc/pic12f675.h
+[v _GPIO GPIO `VEuc  1 e 1 @5 ]
+"795
+[v _TRISIO TRISIO `VEuc  1 e 1 @133 ]
+"1402
+[v _ANSEL ANSEL `VEuc  1 e 1 @159 ]
+"1596
+[v _GP3 GP3 `VEb  1 e 0 @43 ]
+"1605
+[v _GPIE GPIE `VEb  1 e 0 @91 ]
+"1608
+[v _GPIF GPIF `VEb  1 e 0 @88 ]
+"38 /Users/mert/Developer/Hardware/BreathPacer/BreathPacer.X/main.c
+[v _btn_count btn_count `uc  1 s 1 btn_count ]
+"106
+[v _main main `(v  1 e 1 0 ]
+{
+"111
+[v main@mode mode `uc  1 a 1 21 ]
+"127
+} 0
+"94
+[v _enter_sleep enter_sleep `(v  1 s 1 enter_sleep ]
+{
+"104
+} 0
+"84
+[v _breathe breathe `(uc  1 s 1 breathe ]
+{
+[v breathe@inhale inhale `uc  1 p 1 wreg ]
+[v breathe@inhale inhale `uc  1 p 1 wreg ]
+[v breathe@hold1 hold1 `uc  1 p 1 15 ]
+"85
+[v breathe@exhale exhale `uc  1 p 1 16 ]
+[v breathe@hold2 hold2 `uc  1 p 1 17 ]
+[v breathe@inhale inhale `uc  1 p 1 18 ]
+"91
+} 1
+"76
+[v _hold_led hold_led `(uc  1 s 1 hold_led ]
+{
+[v hold_led@led led `uc  1 p 1 wreg ]
+"78
+[v hold_led@f f `us  1 a 2 13 ]
+"77
+[v hold_led@frames frames `us  1 a 2 10 ]
+"76
+[v hold_led@led led `uc  1 p 1 wreg ]
+[v hold_led@duration_sec duration_sec `uc  1 p 1 7 ]
+[v hold_led@led led `uc  1 p 1 12 ]
+"81
+} 1
+"15 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
+"60 /Users/mert/Developer/Hardware/BreathPacer/BreathPacer.X/main.c
+[v _fade_led fade_led `(uc  1 s 1 fade_led ]
+{
+[v fade_led@led led `uc  1 p 1 wreg ]
+"68
+[v fade_led@f_52 f `uc  1 a 1 9 ]
+"64
+[v fade_led@f f `uc  1 a 1 8 ]
+"67
+[v fade_led@duty_51 duty `uc  1 a 1 13 ]
+"63
+[v fade_led@duty duty `uc  1 a 1 12 ]
+"61
+[v fade_led@fps fps `uc  1 a 1 11 ]
+"60
+[v fade_led@led led `uc  1 p 1 wreg ]
+[v fade_led@duration_sec duration_sec `uc  1 p 1 7 ]
+[v fade_led@led led `uc  1 p 1 10 ]
+"72
+} 1
+"42
+[v _pwm_frame pwm_frame `(uc  1 s 1 pwm_frame ]
+{
+[v pwm_frame@led led `uc  1 p 1 wreg ]
+"43
+[v pwm_frame@i i `uc  1 a 1 6 ]
+"42
+[v pwm_frame@led led `uc  1 p 1 wreg ]
+[v pwm_frame@duty duty `uc  1 p 1 0 ]
+[v pwm_frame@led led `uc  1 p 1 3 ]
+"55
+} 1
+"5 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+{
+"10
+[v ___awmod@sign sign `uc  1 a 1 5 ]
+[v ___awmod@counter counter `uc  1 a 1 4 ]
+"5
+[v ___awmod@divisor divisor `i  1 p 2 0 ]
+[v ___awmod@dividend dividend `i  1 p 2 2 ]
+"34
+} 0
